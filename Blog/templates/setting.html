@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/post.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-admin">
+            <h3>Admin</h3>
+            <li><a href="http://127.0.0.1:5501/templates/index.html">Accuille</a></li>
+            <!--________Partie Pour Faire Sortie L'image_____________-->
+            <button class="profile">upload-profile</button>
+            <!--____________Fin_____________________________-->
+            
+            <!--________________________Telecharger l'image de Profile______________________-->
+            <div class="upload-profile">
+                <form action="#" method="post" class="upload">
+                    <input type="file" name="upload-profile">
+                    <button>upload</button>
+                </form>
+            </div>
+            <!--______________Fin_________________________________________________________________-->
+        </div>
+        <!------------------------Fin-------------------------------------->
+        <!--===============partie pour ecrire le blog ===================-->
+        <div class="formulair">
+            <form action="#" method="post">
+                <div>
+                    <input type="file" name="image" placeholder="image...." class="image">
+                </div>
+                <div>
+                    <input type="text" name="titre" class="titre" placeholder="titre......">
+                </div>
+                <div>
+                    <textarea name="content" id="content" cols="30" rows="10" placeholder="Contenu de...."></textarea>
+                </div>
+                <div>
+                    <button>Ajouter</button>
+                </div>
+            </form>
+        </div>
+        <!------------------Fin---------------------------->
+    </div>
+    <script src="/static/js/setting.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social-Blog</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!--============Navbar=============-->
+        <div class="navbar-container">
+            <img src="/static/assets/menu-burger.png" alt="menu" class="menu" style="width: 35px;">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="http://127.0.0.1:5501/templates/index.html">Accuille</a></li>
+                    <li><a href="#">Produit</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <img src="#" alt="Logo" class="logo">
+        </div>
+        <!--=================Fin==============================-->
+
+        <!--====Filter Parte-->
+        <div class="filter">
+            
+            <div class="search-container">
+                <form action="#" method="post">
+                    <div class="search">
+                        <input type="text" name="search" placeholder="search..." >
+                        <BUtton><img src="/static/assets/search.svg" alt="search" style="width: 19px;"></BUtton>
+                    </div>
+                </form>
+            </div>
+            <div class="categorie">
+                <h4>Catégories</h4>
+                <ul>
+                    <li><a href="#">Acctuialliter</a></li>
+                    <li><a href="#">Divertissement</a></li>
+                    <li><a href="#">Amour</a></li>
+                    <li><a href="#">Motivation</a></li>
+                    <li><a href="#">Busness</a></li>
+                    <li><a href="#">Media</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--===========Fin================-->
+        <!--====article-container============-->
+        
+        <div class="article-container">
+            <div class="artile-post">
+            <div class="article-img">
+                <img src="/static/image/background.png.jpg" alt="Busness">
+            </div>
+            <article class="post">
+                <h2>Titre De l'Article</h2>
+                <P>Lorem ipsum dolor sit amet, 
+                    consectetur adipisicing elit. 
+                    Asperiores, atque! Lorem ipsum dolor sit amet
+                    consectetur adipisicing elit. Modi at commodi
+                    repellendus quam assumenda odit. Quo rem repellat,
+                    reprehenderit, iure eum aliquid quisquam ratione 
+                    qui laudantium laborum iusto fugit laboriosam
+                    distinctio, architecto quia mollitia porro
+                    impedit! Culpa impedit distinctio incidunt, est
+                    temporibus exercitationem totam magni? Magni
+                    obcaecati, veritatis tenetur consectetur vero
+                    natus quis? Temporibus ea reprehenderit 
+                    veritatis maxime hic facilis inventore, praesentium dolor incidunt
+                    consequatur quaerat, aliquid excepturi voluptates
+                             </P>
+            </article>
+           
+        </div>
+        <div class="comment-container">
+            <h4 class="h4">Commantaires</h4>
+            <form action="#" method="post" class="comment-form">
+                <input type="text" class="" name="comment" placeholder="Ajouter un commentaire....">
+                
+                <button>Envoyer</button>
+            </form>
+            <!--===11=====-->
+            <div class="comment-parent">
+            <div class="all-comment">
+                
+                <div class="comment">
+                    <img src="/media/blank-profile-picture.png" alt="profile" style="width: 50px; border-radius: 50%;">
+                    <h3>20/01/2024</h3>
+                    <h4>#UserName</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur
+                         adipisicing elit. Molestias reprehenderit sequi minus
+                          aliquam non exercitationem
+                         consectetur iste! Quisquam, obcaecati itaque.</p>
+                </div>
+               
+            </div>
+            <!--Partie reponse du commentaire-->
+            <button class="response-btn"> Repondre</button>
+            
+                <form action="#" method="post" class="form">
+                    <input type="text" name="response" class="resp" placeholder="response.....">
+                    <div class="">
+                        <button class="btn">Envoyer</button>
+                       
+                    </div>
+                </form>
+
+                <div class="response">
+                    <img src="/media/blank-profile-picture.png" alt="">
+                    <h3>21/01/2024</h3>
+                    <h4>#UserName</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Autem, adipisci provident ratione quas vero a
+                        rchitecto dolorum praesentium qui unde itaque.</p>
+                </div>
+            <!--Fin de la partie du commentaire-->
+        </div>
+            <!----------Fin----------------------------------------------------------Fin--------------------------------------->
+        </div>
+        </div>
+            
+        
+        <!--=============Fin==============-->
+        
+    </div>
+    
+    <footer>
+        CopyRight @ 2024
+    </footer>
+
+    <script src="/static/js/post.js"></script>
+</body>
+</html>
