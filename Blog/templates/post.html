@@ -51,25 +51,11 @@
         <div class="article-container">
             <div class="artile-post">
             <div class="article-img">
-                <img src="/static/image/background.png.jpg" alt="Busness">
+                <img src="/static/image/{{article.article_img.url}}" alt="Busness">
             </div>
             <article class="post">
-                <h2>Titre De l'Article</h2>
-                <P>Lorem ipsum dolor sit amet, 
-                    consectetur adipisicing elit. 
-                    Asperiores, atque! Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Modi at commodi
-                    repellendus quam assumenda odit. Quo rem repellat,
-                    reprehenderit, iure eum aliquid quisquam ratione 
-                    qui laudantium laborum iusto fugit laboriosam
-                    distinctio, architecto quia mollitia porro
-                    impedit! Culpa impedit distinctio incidunt, est
-                    temporibus exercitationem totam magni? Magni
-                    obcaecati, veritatis tenetur consectetur vero
-                    natus quis? Temporibus ea reprehenderit 
-                    veritatis maxime hic facilis inventore, praesentium dolor incidunt
-                    consequatur quaerat, aliquid excepturi voluptates
-                             </P>
+                <h2>{{article.title}}</h2>
+                <P>{{article.body}}</P>
             </article>
            
         </div>
