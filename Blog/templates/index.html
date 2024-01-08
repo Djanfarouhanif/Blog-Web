@@ -47,6 +47,7 @@
         </div>
         <!--===========Fin================-->
         <!--====article-container============-->
+        {% for article in articles %}
         <div class="article-container">
             <!--==========111============-->
             <div class="article">
@@ -54,18 +55,15 @@
                 <img src="/static/image/background.png.jpg" alt="">
                 </div>
                 <article>
-                    <h2>Titre de L'article</h2>
-                    <p>Article Detailers... Lorem ipsum dolor sit amet consectetur
-                         adipisicing elit. Dolores mollitia aspernatur aliquid 
-                         minima quo, qui voluptatibus labore debitis, officiis 
-                         maiores et aliquam suscipit consectetur,
-                         molestiae ducimus vero perferendis ullam rerum!</p>
-                         <a href="http://127.0.0.1:5501/templates/post.html">En savoir plus......</a>
+                    <h2>{{article.titre}}</h2>
+                    <p>{{article.body}}</p>
+                         <a href="/post/{{article.article_img}}">En savoir plus......</a>
                 </article>
             </div>
+            {% endfor %}
             <!--Fin-->
             <!--==========2222-->
-            <div class="article">
+          <!--  <div class="article">
                 <div>
                 <img src="/static/image/Future_Of_Artificial_Intelligence.avif" alt="">
                 </div>
@@ -78,10 +76,10 @@
                         , nisi cupiditate esse quasi exercitationem fugiat.</p>
                         <a href="#">En savoir plus......</a>
                 </article>
-            </div>
+            </div> -->
             <!--Fin-->
             <!--==============333============-->
-            <div class="article">
+            <!--<div class="article">
                 <div>
                 <img src="/static/image/13.jpg" alt="">
                 </div>
@@ -93,7 +91,7 @@
                         fuga minus harum, illum voluptatem optio labore nesciunt?</p>
                         <a href="#">En savoir plus......</a>
                 </article>
-            </div>
+            </div> -->
             <!--Fin-->
             <!--==============4444=========-->
             <div class="article" >
@@ -111,7 +109,7 @@
                 </article>
                
             </div>
-            <!--Fin-->
+            <!--Fin--> 
             <h4 class="next"><a href="#">Plus.......</a></h4>
         </div>
         <!--=============Fin==============-->

@@ -11,14 +11,14 @@
     <div class="container">
         <div class="logo-admin">
             <h3>Admin</h3>
-            <li><a href="http://127.0.0.1:5501/templates/index.html">Accuille</a></li>
+            <li><a href="/">Accuille</a></li>
             <!--________Partie Pour Faire Sortie L'image_____________-->
             <button class="profile">upload-profile</button>
             <!--____________Fin_____________________________-->
             
             <!--________________________Telecharger l'image de Profile______________________-->
             <div class="upload-profile">
-                <form action="#" method="post" class="upload">
+                <form action="" method="post" class="upload">
                     <input type="file" name="upload-profile">
                     <button>upload</button>
                 </form>
@@ -28,9 +28,19 @@
         <!------------------------Fin-------------------------------------->
         <!--===============partie pour ecrire le blog ===================-->
         <div class="formulair">
-            <form action="#" method="post">
+            <form action="" method="post">
                 <div>
                     <input type="file" name="image" placeholder="image...." class="image">
+                </div>
+                <div>
+                    <label for="Category">Choisire le Category de l'Article</label>
+                    <select name="category" id="category">
+                        <option value="Divertissement">Divertissement</option>
+                        <option value="Amour">Amour</option>
+                        <option value="Motivation">Motivation</option>
+                        <option value="Busness">Busness</option>
+                        <option value="Media">Media</option>
+                    </select>
                 </div>
                 <div>
                     <input type="text" name="titre" class="titre" placeholder="titre......">
