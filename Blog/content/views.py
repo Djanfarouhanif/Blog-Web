@@ -11,11 +11,15 @@ def index(request):
 
 def post(request, pk):
     article = Article.objects.get(article_id=pk)
+    comment = Comment.objects.filter(article=article)
 
-    #comment = Comment.objects.get(article=article)
+    if request.method == 'POST':
+        comment = request.POST['comment']
+        new_comment = Comment.objects.create(article=article,comment=comment)
+        new_comment.save()
+        return redirect('post', pk=pk)
 
-
-    
+        
     context = {
         'article':article,
         'comments':comment
@@ -42,18 +46,5 @@ def setting(request):
             return redirect('setting')
     return render(request, 'setting.html')
 
-def comment(request,pk):
-    article  = Article.objects.get(article_id=pk)
-    if request.method=='POST':
-        print("post")
 
-        comment = request.POST['comment']
-       
-
-        new_comment = Comment.objects.create(article=article,comment=comment)
-        new_comment.save()
-        return redirect('post', pk=pk)
-    else:
-        return redirect('post',pk=pk)
-       
     
