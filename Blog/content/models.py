@@ -30,7 +30,7 @@ class Comment(models.Model):
     date_create = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
-        return self.date_create
+        return  f"Comment on {self.date_create.strftime('%Y-%m-%d %H:%M:%S')}"
 
 class Response(models.Model):
     comment_parent = models.ForeignKey(Comment,on_delete=models.CASCADE)
