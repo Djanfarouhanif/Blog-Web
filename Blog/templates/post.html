@@ -13,7 +13,7 @@
             <img src="/static/assets/menu-burger.png" alt="menu" class="menu" style="width: 35px;">
             <nav class="navbar">
                 <ul>
-                    <li><a href="http://127.0.0.1:5501/templates/index.html">Accuille</a></li>
+                    <li><a href="/">Accuille</a></li>
                     <li><a href="#">Produit</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
@@ -61,25 +61,24 @@
         </div>
         <div class="comment-container">
             <h4 class="h4">Commantaires</h4>
-            <form action="#" method="post" class="comment-form">
+            <form action="{% url 'comment' article.article_id %}" method="POST" class="comment-form">
+                {% csrf_token %}
                 <input type="text" class="" name="comment" placeholder="Ajouter un commentaire....">
                 
                 <button>Envoyer</button>
             </form>
             <!--===11=====-->
             <div class="comment-parent">
+                {% for comment in comments %}
             <div class="all-comment">
                 
                 <div class="comment">
                     <img src="/media/blank-profile-picture.png" alt="profile" style="width: 50px; border-radius: 50%;">
-                    <h3>20/01/2024</h3>
+                    <h3>{{comment.date_create}}</h3>
                     <h4>#UserName</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur
-                         adipisicing elit. Molestias reprehenderit sequi minus
-                          aliquam non exercitationem
-                         consectetur iste! Quisquam, obcaecati itaque.</p>
+                    <p>{{comment.comment}}</p>
                 </div>
-               
+               {% endfor %}
             </div>
             <!--Partie reponse du commentaire-->
             <button class="response-btn"> Repondre</button>

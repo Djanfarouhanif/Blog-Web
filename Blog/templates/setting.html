@@ -19,6 +19,7 @@
             <!--________________________Telecharger l'image de Profile______________________-->
             <div class="upload-profile">
                 <form action="" method="post" class="upload">
+                    {% csrf_token %}
                     <input type="file" name="upload-profile">
                     <button>upload</button>
                 </form>
@@ -29,6 +30,7 @@
         <!--===============partie pour ecrire le blog ===================-->
         <div class="formulair">
             <form action="" method="post">
+                {% csrf_token %}
                 <div>
                     <input type="file" name="image" placeholder="image...." class="image">
                 </div>

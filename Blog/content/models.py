@@ -26,11 +26,20 @@ class Article(models.Model):
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     username = models.CharField(max_length=100)
+    comment = models.TextField()
+    date_create = models.DateTimeField(default=datetime.now)
+
+    def __str__(self):
+        return self.date_create
+
+class Response(models.Model):
+    comment_parent = models.ForeignKey(Comment,on_delete=models.CASCADE)
+    username = models.CharField(max_length=100)
+    response = models.TextField()
+    date_create = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
         return self.username
-
-
     
     
 
