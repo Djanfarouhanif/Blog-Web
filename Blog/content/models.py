@@ -25,6 +25,7 @@ class Article(models.Model):
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    id = models.IntegerField(primary_key=True)
     username = models.CharField(max_length=100)
     comment = models.TextField()
     date_create = models.DateTimeField(default=datetime.now)
@@ -33,6 +34,7 @@ class Comment(models.Model):
         return  f"Comment on {self.date_create.strftime('%Y-%m-%d %H:%M:%S')}"
 
 class Response(models.Model):
+    id_response = models.CharField(max_length=100)
     comment_parent = models.ForeignKey(Comment,on_delete=models.CASCADE)
     username = models.CharField(max_length=100)
     response = models.TextField()

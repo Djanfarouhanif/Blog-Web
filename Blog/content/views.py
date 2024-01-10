@@ -7,18 +7,28 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
     article = Article.objects.all()
+
+
     return render(request, 'index.html',{'articles':article})
 
 def post(request, pk):
     article = Article.objects.get(article_id=pk)
+    comment = Comment.objects.filter(article=article)
+    response = Response.objects.all()
+    print(comment,'+====+====+==+=+=+=+=+=+=+=+=+=+')
 
-    #comment = Comment.objects.get(article=article)
+    if request.method == 'POST':
+        comment = request.POST['comment']
+        new_comment = Comment.objects.create(article=article,comment=comment)
+        new_comment.save()
+        return redirect('post', pk=pk)
 
 
-    
+        
     context = {
         'article':article,
-        'comments':comment
+        'comments':comment,
+        'responses':response,
 
     }
     return render(request,'post.html', context)
@@ -42,18 +52,23 @@ def setting(request):
             return redirect('setting')
     return render(request, 'setting.html')
 
-def comment(request,pk):
-    article  = Article.objects.get(article_id=pk)
-    if request.method=='POST':
-        print("post")
 
-        comment = request.POST['comment']
-       
-
-        new_comment = Comment.objects.create(article=article,comment=comment)
-        new_comment.save()
-        return redirect('post', pk=pk)
-    else:
-        return redirect('post',pk=pk)
-       
+def response(request):
+    comment_id = request.GET.get('comment_id')
+    comment = Comment.objects.get(id=comment_id)
+    comment_uuid = comment.article.article_id
     
+
+    if request.method == 'POST':
+        response = request.POST['response']
+        
+        new_response = Response.objects.create(id_response=comment_id, response=response, comment_parent=comment)
+        new_response.save()
+        print(comment_uuid,'==================================')
+        return redirect(f'post/{comment_uuid}')
+
+    else:
+        return redirect(f'post/{comment_uuid}')
+        
+
+

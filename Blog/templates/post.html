@@ -61,15 +61,16 @@
         </div>
         <div class="comment-container">
             <h4 class="h4">Commantaires</h4>
-            <form action="{% url 'comment' article.article_id %}" method="POST" class="comment-form">
+            <form action="" method="POST" class="comment-form">
                 {% csrf_token %}
                 <input type="text" class="" name="comment" placeholder="Ajouter un commentaire....">
                 
                 <button>Envoyer</button>
             </form>
             <!--===11=====-->
+            {% for comment in comments %}
             <div class="comment-parent">
-                {% for comment in comments %}
+               
             <div class="all-comment">
                 
                 <div class="comment">
@@ -78,29 +79,38 @@
                     <h4>#UserName</h4>
                     <p>{{comment.comment}}</p>
                 </div>
-               {% endfor %}
+              
             </div>
             <!--Partie reponse du commentaire-->
             <button class="response-btn"> Repondre</button>
             
-                <form action="#" method="post" class="form">
+                <form action="{% url 'response' %}?comment_id={{comment.id}}" method="post" class="form">
+                                {% csrf_token %}
                     <input type="text" name="response" class="resp" placeholder="response.....">
                     <div class="">
                         <button class="btn">Envoyer</button>
                        
                     </div>
                 </form>
-
+                {% if response %}
+                {% for response in responses %}
+                    {% if response.id_resopnse == comment.id %}
+                        <p style="background-color: green;">vrai</p>
                 <div class="response">
                     <img src="/media/blank-profile-picture.png" alt="">
-                    <h3>21/01/2024</h3>
+                    <h3>{{response.date_create}}</h3>
                     <h4>#UserName</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Autem, adipisci provident ratione quas vero a
-                        rchitecto dolorum praesentium qui unde itaque.</p>
+                    <p>{{response.response}}</p>
                 </div>
-            <!--Fin de la partie du commentaire-->
+                    {% else %}
+                <p style="background-color:rgb(235, 228, 228);">{{ response.id_response}} == {{comment.id}}</p>
+                    {% endif %}
+               
+                
+            <!--Fin de la partie  du commentaire-->
+            {% endfor %}
         </div>
+            {% endfor %}
             <!----------Fin----------------------------------------------------------Fin--------------------------------------->
         </div>
         </div>
