@@ -7,36 +7,34 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
     article = Article.objects.all()
-
-
     return render(request, 'index.html',{'articles':article})
-
 def post(request, pk):
     article = Article.objects.get(article_id=pk)
-    comment = Comment.objects.filter(article=article)
-    response = Response.objects.all()
-    print(comment,'+====+====+==+=+=+=+=+=+=+=+=+=+')
-
+    #comment = Comment.objects.filter(article=article)
+    comment_current = Comment.objects.filter(article=article)
+    
     if request.method == 'POST':
         comment = request.POST['comment']
         new_comment = Comment.objects.create(article=article,comment=comment)
+       
         new_comment.save()
-        return redirect('post', pk=pk)
-
-
-        
+        return redirect('post', pk=pk) 
+   
+    #---------------------------------------------#
+    comment_response = {}
+    for comment in comment_current:
+        response = Response.objects.filter(id_response=comment.id)
+        comment_response[comment] = response
+        print(comment,"=================")
+        print(response)
+    
     context = {
         'article':article,
-        'comments':comment,
-        'responses':response,
-
+        'comment_response':comment_response,
     }
-    return render(request,'post.html', context)
-
-
+    return render(request, 'post.html', context)
 @login_required(login_url='index')
 def setting(request):
-    
     if request.method=='POST':
         titre = request.POST['titre']
         content = request.POST['content']
@@ -51,24 +49,20 @@ def setting(request):
             article.save()
             return redirect('setting')
     return render(request, 'setting.html')
-
-
 def response(request):
     comment_id = request.GET.get('comment_id')
     comment = Comment.objects.get(id=comment_id)
     comment_uuid = comment.article.article_id
-    
-
     if request.method == 'POST':
         response = request.POST['response']
-        
         new_response = Response.objects.create(id_response=comment_id, response=response, comment_parent=comment)
         new_response.save()
-        print(comment_uuid,'==================================')
         return redirect(f'post/{comment_uuid}')
-
     else:
         return redirect(f'post/{comment_uuid}')
-        
+
+def filtre(request):
+
+    return 
 
 

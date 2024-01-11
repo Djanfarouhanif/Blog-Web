@@ -68,9 +68,9 @@
                 <button>Envoyer</button>
             </form>
             <!--===11=====-->
-            {% for comment in comments %}
+         {% for comment, responses in comment_response.items %}
+         
             <div class="comment-parent">
-               
             <div class="all-comment">
                 
                 <div class="comment">
@@ -92,25 +92,23 @@
                        
                     </div>
                 </form>
-                {% if response %}
+                {% if responses %}
+                
                 {% for response in responses %}
-                    {% if response.id_resopnse == comment.id %}
-                        <p style="background-color: green;">vrai</p>
+                   
                 <div class="response">
                     <img src="/media/blank-profile-picture.png" alt="">
                     <h3>{{response.date_create}}</h3>
                     <h4>#UserName</h4>
                     <p>{{response.response}}</p>
                 </div>
-                    {% else %}
-                <p style="background-color:rgb(235, 228, 228);">{{ response.id_response}} == {{comment.id}}</p>
-                    {% endif %}
-               
-                
+                    
             <!--Fin de la partie  du commentaire-->
             {% endfor %}
+            {% endif %}
         </div>
-            {% endfor %}
+        {% endfor %}
+        
             <!----------Fin----------------------------------------------------------Fin--------------------------------------->
         </div>
         </div>

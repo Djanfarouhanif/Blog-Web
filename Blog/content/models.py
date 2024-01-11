@@ -41,7 +41,7 @@ class Response(models.Model):
     date_create = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
-        return self.username
+        return self.response
     
     
 
