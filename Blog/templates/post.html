@@ -26,7 +26,8 @@
         <div class="filter">
             
             <div class="search-container">
-                <form action="#" method="post">
+                <form action="{% url 'index' %}" method="post">
+                    {% csrf_token %}
                     <div class="search">
                         <input type="text" name="search" placeholder="search..." >
                         <BUtton><img src="/static/assets/search.svg" alt="search" style="width: 19px;"></BUtton>
@@ -35,14 +36,18 @@
             </div>
             <div class="categorie">
                 <h4>Catégories</h4>
-                <ul>
-                    <li><a href="#">Acctuialliter</a></li>
-                    <li><a href="#">Divertissement</a></li>
-                    <li><a href="#">Amour</a></li>
-                    <li><a href="#">Motivation</a></li>
-                    <li><a href="#">Busness</a></li>
-                    <li><a href="#">Media</a></li>
-                </ul>
+                <form action="{% url 'index' %}" method="post">
+                    {% csrf_token %}
+                    <select name="categorie" id="categorie">
+                        <option value="actualiter">Actualiter</option>
+                        <option value="Divertissement">Divertissement</option>
+                        <option value="Amour">Amour</option>
+                        <option value="Motivation">Motivation</option>
+                        <option value="Busness">Busness</option>
+                        <option value="Media">Media</option>
+                    </select>
+                    <input type="submit" value="filtre">
+                </form>
             </div>
         </div>
         <!--===========Fin================-->

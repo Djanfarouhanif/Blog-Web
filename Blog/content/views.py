@@ -1,13 +1,29 @@
 from django.shortcuts import render,redirect
-
+from django.http import HttpResponse
 from .models import Author, Article, Comment, Response
 from django.contrib.auth.models import auth, User
 from django.contrib.auth.decorators import login_required
+from  itertools import chain
+import random
 
 
 def index(request):
-    article = Article.objects.all()
+    
+    if request.method == 'POST':
+        if request.POST.get('categorie'):
+            current_article = request.POST.get('categorie')
+            article= Article.objects.filter(category=current_article)
+
+           
+        elif request.POST.get('search'):
+            search = request.POST.get('search')
+            article = Article.objects.filter(category__icontains=search)
+        
+    else:
+
+        article = Article.objects.all()
     return render(request, 'index.html',{'articles':article})
+
 def post(request, pk):
     article = Article.objects.get(article_id=pk)
     #comment = Comment.objects.filter(article=article)
@@ -25,9 +41,6 @@ def post(request, pk):
     for comment in comment_current:
         response = Response.objects.filter(id_response=comment.id)
         comment_response[comment] = response
-        print(comment,"=================")
-        print(response)
-    
     context = {
         'article':article,
         'comment_response':comment_response,
@@ -60,9 +73,9 @@ def response(request):
         return redirect(f'post/{comment_uuid}')
     else:
         return redirect(f'post/{comment_uuid}')
-
+    
 def filtre(request):
-
-    return 
-
+    article = Article.objects.all()
+    
+    return HttpResponse()
 
