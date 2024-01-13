@@ -14,7 +14,6 @@ def index(request):
             current_article = request.POST.get('categorie')
             article= Article.objects.filter(category=current_article)
 
-           
         elif request.POST.get('search'):
             search = request.POST.get('search')
             article = Article.objects.filter(category__icontains=search)

@@ -1,3 +1,13 @@
+
+@font-face{
+    font-family: 'Roboto';
+    src:url(/static/font/roboto/libre_franklin/LibreFranklin-VariableFont_wght.ttf)format('truetype');
+    /*font-weight: bold;
+    font-style: italic;
+    font-size: 75px;*/
+}
+
+
 :root{
     --primary-color :  rgba(9, 63, 240, 0.9);
     --opacity: rgba(0,0,0,0.3);
@@ -13,11 +23,12 @@
     text-decoration: none;
     list-style: none;
     
+    
 }
 
 body{
     background:var(--body);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'roboto', sans-serif, ;
     box-sizing: border-box;
   
 }
@@ -83,7 +94,7 @@ body{
 /*--------Fin--------------*/
 /*===============Filter=============*/
 .filter, .article-container{
-    margin: 50px;
+    margin: 10px;
 }
 
 .filter{
@@ -96,6 +107,8 @@ body{
     background-color: rgba(207, 199, 199, 0.6);
     box-shadow: 0px 0px 10px black;
     border-radius: 5px;
+    width: 25px;
+    
 }
 .filter .search-container{
     
@@ -108,23 +121,31 @@ body{
 .filter .search{
     display: flex;
     position: relative;
+    
 
 }
 .filter input{
 padding: 10px;
-border-radius: 30px;
+border-radius: 30px 0px 0px 30px;
 font-size: 18px;
 background-color:var(--input);
 border: 1px solid ;
 border-color: hwb(0 94% 4%);
+width: 100%;
+outline: none;
 
+}
+
+.filter input:focus{
+    border: 1px solid var(--primary-color);
+    border-right: none;
 }
 
 .filter .search button{
     position: relative;
-    background-color: #ddd;
+    background-color: none;
     border: none;
-    right: 30px;
+  
     border-left: 2px solid #8d8282;
     border-radius: 0px 20px 20px 0px;
     width: 60px;
@@ -180,19 +201,29 @@ border-color: hwb(0 94% 4%);
     border-radius: 5px;
 }
 .article{
-    margin: 20px auto;
+    margin: 20px auto ;
     box-shadow: 5px 5px 15px var(--opacity);
     max-width: 70%;
     border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    
+
+}
+
+article{
+    width: 100%;
+}
+.article-container .article .img{
+    width: 100%;
+   
 }
 .article-container  .article img{
-    width: 200px;
-    height: 200px;
+    width: 100%;
     object-fit: cover;
-    border-radius: 50%;
-    margin-right: 20px;
-    shape-outside: margin-box;
-    margin: 20px;
+   
+    
+
 }
 
 .article article p, h2{
@@ -201,11 +232,20 @@ border-color: hwb(0 94% 4%);
     
     
 }
+.article article p{
+    font-size: 20px;
+    text-align: center;
+    margin: 15px;
+    
+    
+}
+
 
 .article article h2{
     text-align: center;
     margin-bottom: 20px;
-    color: #5e5a5a;
+    color: var(--primary-color);
+    font-size: 50px;
 }
 
 footer{
@@ -520,7 +560,55 @@ footer{
     
 /*-----------Fin Page-----------*/
 @media screen and (max-width:900px){
+    .filter{
+    
+    
+        padding: 15px;
+        max-height: 600px;
+        margin-left: 10px;
+        flex: 1;
+        background-color: rgba(207, 199, 199, 0.6);
+        box-shadow: 0px 0px 10px black;
+        border-radius: 5px;
+        width: 300px;
+        
+    }
+    .article{
+    margin: 20px auto ;
+    box-shadow: 5px 5px 15px var(--opacity);
+    max-width: 400px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    
 
+    
+
+}
+
+    .filter input{
+    
+    border-radius: 30px;
+    
+    background-color:var(--input);
+    border: 1px solid ;
+    border-color: hwb(0 94% 4%);
+    width:200px;
+    outline: none;
+    margin-right: 15px;
+    font-size: 10px;
+    height: 30px;
+
+    }
+    .filter button{
+       right: 35px;
+       padding: 15px;
+       height: 30px;
+    }
+    .filter button img{
+        position: relative;
+        bottom: 10px;
+    }
     .navbar-container .menu{
         display: block;
 
