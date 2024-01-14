@@ -26,8 +26,7 @@
         <div class="filter">
             
             <div class="search-container">
-                <form action="{% url 'index' %}" method="post">
-                    {% csrf_token %}
+                <form action="#" method="post">
                     <div class="search">
                         <input type="text" name="search" placeholder="search..." >
                         <BUtton><img src="/static/assets/search.svg" alt="search" style="width: 19px;"></BUtton>
@@ -36,7 +35,7 @@
             </div>
             <div class="categorie">
                 <h4>Catégories</h4>
-                <form action="" method="post">
+                <form action="{% url 'index' %}" method="post">
                     {% csrf_token %}
                     <select name="categorie" id="categorie">
                         <option value="actualiter">Actualiter</option>
@@ -52,12 +51,12 @@
         </div>
         <!--===========Fin================-->
         <!--====article-container============-->
-        {% for article in articles %}
         <div class="article-container">
             <!--==========111============-->
+            {% for article in articles %}
             <div class="article">
-                <div>
-                <img src="/static/image/background.png.jpg" alt="">
+                <div class="img">
+                <img src="{{article.article_img.url}}" alt="">
                 </div>
                 <article>
                     <h2>{{article.titre}}</h2>
@@ -67,9 +66,9 @@
             </div>
             {% endfor %}
             <!--Fin-->
-            <!--==========2222-->
-          <!--  <div class="article">
-                <div>
+            <!--==========2222--
+            <div class="article">
+                <div class="img">
                 <img src="/static/image/Future_Of_Artificial_Intelligence.avif" alt="">
                 </div>
                 <article>
@@ -81,26 +80,24 @@
                         , nisi cupiditate esse quasi exercitationem fugiat.</p>
                         <a href="#">En savoir plus......</a>
                 </article>
-            </div> -->
-            <!--Fin-->
-            <!--==============333============-->
-            <!--<div class="article">
-                <div>
+            </div>
+            Fin-->
+            <!--==============333============--
+            <div class="article">
+                <div class="img">
                 <img src="/static/image/13.jpg" alt="">
                 </div>
                 <article>
                     <h2>Titre de L'article</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Suscipit minima neque placeat dignissimos deserunt numquam 
-                        ab veritatis provident impedit et laudantium quam 
-                        fuga minus harum, illum voluptatem optio labore nesciunt?</p>
+                        Suscipit minima neq</p>
                         <a href="#">En savoir plus......</a>
                 </article>
-            </div> -->
-            <!--Fin-->
-            <!--==============4444=========-->
+            </div>
+            Fin-->
+            <!--==============4444=========--
             <div class="article" >
-                <div>
+                <div class="img">
                 <img src="/static/image/18.jpg" alt="">
                 </div>
                 
@@ -114,7 +111,7 @@
                 </article>
                
             </div>
-            <!--Fin--> 
+            Fin-->
             <h4 class="next"><a href="#">Plus.......</a></h4>
         </div>
         <!--=============Fin==============-->

@@ -66,7 +66,7 @@
         </div>
         <div class="comment-container">
             <h4 class="h4">Commantaires</h4>
-            <form action="" method="POST" class="comment-form">
+            <form action="{% url 'post' pk=article.article_id %}" method="POST" class="comment-form">
                 {% csrf_token %}
                 <input type="text" class="" name="comment" placeholder="Ajouter un commentaire....">
                 

@@ -8,43 +8,57 @@ import random
 
 
 def index(request):
-    
+    article_sugg = []
     if request.method == 'POST':
         if request.POST.get('categorie'):
             current_article = request.POST.get('categorie')
-            article= Article.objects.filter(category=current_article)
+            article= Article.objects.filter(category__icontains=current_article)
+           
+            for  i in article:
+                article_sugg.append(i)
 
         elif request.POST.get('search'):
             search = request.POST.get('search')
             article = Article.objects.filter(category__icontains=search)
+            for i in article:
+                article_sugg.append(i)
         
     else:
 
         article = Article.objects.all()
-    return render(request, 'index.html',{'articles':article})
+        for i in article:
+            article_sugg.append(i)
+    random.shuffle(article_sugg)
+    print(article_sugg, '=============================')
+    return render(request, 'index.html',{'articles':article_sugg})
+
 
 def post(request, pk):
     article = Article.objects.get(article_id=pk)
-    #comment = Comment.objects.filter(article=article)
-    comment_current = Comment.objects.filter(article=article)
-    
+
     if request.method == 'POST':
-        comment = request.POST['comment']
-        new_comment = Comment.objects.create(article=article,comment=comment)
-       
+        comment_text = request.POST['comment']
+        new_comment = Comment.objects.create(article=article, comment=comment_text)
         new_comment.save()
-        return redirect('post', pk=pk) 
-   
-    #---------------------------------------------#
+        
+        
+        return HttpResponse(f"Comment submitted successfully: {new_comment.comment}")
+        return redirect('post', pk=pk)
+
+    comment_current = Comment.objects.filter(article=article)
     comment_response = {}
-    for comment in comment_current:
-        response = Response.objects.filter(id_response=comment.id)
-        comment_response[comment] = response
+
+    for existing_comment in comment_current:
+        response = Response.objects.filter(id_response=existing_comment.id)
+        comment_response[existing_comment] = response
+
     context = {
-        'article':article,
-        'comment_response':comment_response,
+        'article': article,
+        'comment_response': comment_response,
     }
+
     return render(request, 'post.html', context)
+
 @login_required(login_url='index')
 def setting(request):
     if request.method=='POST':
@@ -61,6 +75,7 @@ def setting(request):
             article.save()
             return redirect('setting')
     return render(request, 'setting.html')
+
 def response(request):
     comment_id = request.GET.get('comment_id')
     comment = Comment.objects.get(id=comment_id)
@@ -73,8 +88,5 @@ def response(request):
     else:
         return redirect(f'post/{comment_uuid}')
     
-def filtre(request):
-    article = Article.objects.all()
-    
-    return HttpResponse()
+
 

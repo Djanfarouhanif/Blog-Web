@@ -7,5 +7,5 @@ urlpatterns = [
     path('setting', views.setting, name='setting'),
     #path('comment/<str:pk>', views.comment, name='comment'),
     path('response',views.response, name='response'),
-    path('filtre', views.filtre, name='filtre'),
+    #path('filtre', views.filtre, name='filtre'),
 ]
