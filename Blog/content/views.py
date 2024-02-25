@@ -42,7 +42,6 @@ def post(request, pk):
         new_comment.save()
         
         
-        return HttpResponse(f"Comment submitted successfully: {new_comment.comment}")
         return redirect('post', pk=pk)
 
     comment_current = Comment.objects.filter(article=article)
